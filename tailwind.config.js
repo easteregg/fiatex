@@ -8,7 +8,11 @@ module.exports = {
       "-90": "-90deg",
       "270": "270deg",
     },
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'exchange-panel': 'min-content 1fr min-content'
+      }
+    },
   },
   variants: {
     extend: {},
