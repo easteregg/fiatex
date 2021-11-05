@@ -18,7 +18,7 @@ const Amount = ({
   const is_disabled = Boolean(validationError) || amount === 0;
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center" data-testid="amount-selector">
       <div className="flex">
         <input
           className="duration-150 h-10 w-96 bg-white rounded-sm focus:shadow-lg hover:shadow-md outline-none px-4"
@@ -41,7 +41,7 @@ const Amount = ({
       </div>
 
       {validationError && (
-        <p className="text-red-500 font-bold mt-3">{validationError}</p>
+        <p data-testid="validation-error" className="text-red-500 font-bold mt-3">{validationError}</p>
       )}
     </div>
   );
