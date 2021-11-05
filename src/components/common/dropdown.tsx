@@ -12,8 +12,9 @@ export const Dropdown = ({
   currencies,
   selectedCurrency,
   onChange,
+  ...props
 }: TCurrencyDropdownProps) => (
-  <div className="select-wrapper">
+  <div className="select-wrapper" {...props}>
     <select
       className="bg-white outline-none rounded-lg p-2 text-xl duration-150  shadow-sm hover:shadow-lg cursor-pointer"
       value={selectedCurrency}
