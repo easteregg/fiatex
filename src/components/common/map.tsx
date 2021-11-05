@@ -25,7 +25,7 @@ const Map = ({ getCurrencyBySymbol }: TMapProps) => {
   const currencyWrapper = "flex mx-2 px-2 items-baseline gap-2";
 
   return (
-    <div className="w-full flex-col lg:flex-row text-3xl font-bold uppercase  text-gray-400 justify-self-center flex items-center justify-center">
+    <div className="w-full flex-col lg:flex-row text-3xl font-bold uppercase  text-gray-400 justify-self-center flex items-center justify-center" data-testid="map-currency">
       <div className={currencyWrapper}>
         <div>
           {sourceFormatter.format(
