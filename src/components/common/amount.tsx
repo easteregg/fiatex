@@ -25,7 +25,9 @@ const Amount = ({
           name={currency}
           value={amount}
           type="number"
-          min="0"
+          required
+          min={0}
+          step={0.01}
           onChange={onChange}
         />
         <button

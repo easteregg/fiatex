@@ -1,11 +1,12 @@
-import { getExchangeRate } from "@/stores/currencies";
+import { getExchangeRate, sourceCurrencyAtom, targetCurrencyAtom } from "@/stores/currencies";
 import React from "react";
+import { useRecoilValue } from "recoil";
 
-type TExchangeRateProps = {
-  source: string;
-  target: string;
-};
-const ExchangeRate = ({ source, target }: TExchangeRateProps) => {
+
+const ExchangeRate = () => {
+  const source = useRecoilValue(sourceCurrencyAtom);
+  const target = useRecoilValue(targetCurrencyAtom);
+
   const exchangeRate = getExchangeRate(source, target);
   return (
     <div className="flex items-center flex-col justify-start self-baseline">

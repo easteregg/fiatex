@@ -5,7 +5,7 @@ type TArrowProps = {
 }
 export const Arrow = ({ className }: TArrowProps) => (
     <svg
-        className={`h-6 w-6 text-gray-500 transform rotate-270 ${className} `}
+        className={`h-6 w-6 text-gray-500 transform lg:rotate-270 ${className} `}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

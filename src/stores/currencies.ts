@@ -24,6 +24,10 @@ export const currenciesAtom = atom<TCurrency[]>({
   default: CURRENCIES,
 });
 
+export const amountAtom = atom<number>({
+  key: "amount",
+  default: 0,
+});
 export const sourceCurrencyAtom = atom({
   key: "sourceCurrency",
   default: "USD",
@@ -45,9 +49,16 @@ export const getExchangeRate = (source: string, target: string): number => {
     ["GBP", "EUR", 1.3],
   ];
 
-  const found = staticData.find(([sourceCurrency, targetCurrency]) =>  {
+  const found = staticData.find(([sourceCurrency, targetCurrency]) => {
     return sourceCurrency === source && targetCurrency === target;
   });
 
   return found ? found[2] : 1;
+};
+
+export const getCurrencyFormatter = (currency: string): Intl.NumberFormat => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: currency,
+  });
 };

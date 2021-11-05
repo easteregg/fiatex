@@ -1,16 +1,19 @@
 import React from "react";
-import { Card, Dropdown, Amount, Map, ExchangeRate } from "@/components/common/index";
+import { Card, Amount } from "@/components/common/index";
 import {
+  amountAtom,
   currenciesAtom,
   getExchangeRate,
   sourceCurrencyAtom,
   targetCurrencyAtom,
 } from "@/stores/currencies";
+import { ReactComponent as SwapIcon } from "@/components/common/swap.svg";
+import { CurrencySelector } from "./currency-selector";
 import { useRecoilState } from "recoil";
 import { TCurrency } from "@/types/currency";
 
 export const ExchangePanel = () => {
-  const [amount, setAmount] = React.useState<number>(0);
+  const [amount, setAmount] = useRecoilState(amountAtom);
   const [currencies, setCurrencies] =
     useRecoilState<TCurrency[]>(currenciesAtom);
   const [sourceCurrency, setSourceCurrency] =
@@ -20,11 +23,17 @@ export const ExchangePanel = () => {
   const [validationError, setValidationError] = React.useState<
     string | boolean
   >(false);
+  
+  const swapSourceTarget = () => {
+    const temp = sourceCurrency;
+    setSourceCurrency(targetCurrency);
+    setTargetCurrency(temp);
+  };
 
   React.useEffect(() => {
     if (sourceCurrency === targetCurrency) {
       const c = currencies.find((c) => c.symbol !== sourceCurrency);
-      
+
       if (c) {
         setTargetCurrency(c.symbol);
       }
@@ -42,8 +51,7 @@ export const ExchangePanel = () => {
   }, [targetCurrency]);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "" || e.target.value === "0") {
-      setAmount(1);
+    if (e.target.value === "") {
       return;
     }
     const source: TCurrency | undefined = currencies.find(
@@ -59,9 +67,8 @@ export const ExchangePanel = () => {
     }
   };
 
-  const getCurrencyBySymbol = (symbol: string) => {
-    return currencies.find((currency) => currency.symbol === symbol);
-  };
+  const getCurrencyBySymbol = (symbol: string) =>
+    currencies.find((currency) => currency.symbol === symbol);
 
   const sendMoney = (source: string, target: string, amount: number) => {
     const sourceCurrency = getCurrencyBySymbol(source);
@@ -123,42 +130,17 @@ export const ExchangePanel = () => {
   };
 
   return (
-    <>
-    <Card >
-      <ExchangeRate source={sourceCurrency} target={targetCurrency} />
-    </Card>
     <Card className="w-auto h-auto gap-10 ">
-      <div
-        className="grid grid-flow-col grid-cols-exchange-panel content-center gap-10"
-        data-testid="app"
-      >
-        <div className="justify-self-center">
-          <Dropdown
-            currencies={currencies}
-            selectedCurrency={sourceCurrency}
-            data-testid="source-dropdown"
-            onChange={function (currency: string): void {
-              const found = currencies.find((c) => c.symbol === currency);
-              if (found) {
-                setSourceCurrency(found.symbol);
-              }
-            }}
-          />
-        </div>
-        <Map sourceCurrency={sourceCurrency} amount={amount} targetCurrency={targetCurrency} getCurrencyBySymbol={getCurrencyBySymbol} />
-        <div className="justify-self-center">
-          <Dropdown
-            currencies={currencies}
-            selectedCurrency={targetCurrency}
-            data-testid="target-dropdown"
-            onChange={function (currency: string): void {
-              const found = currencies.find((c) => c.symbol === currency);
-              if (found) {
-                setTargetCurrency(found.symbol);
-              }
-            }}
-          />
-        </div>
+      <CurrencySelector getCurrencyBySymbol={getCurrencyBySymbol} />
+      <div className="flex items-center justify-center">
+        <button
+          className="rounded-lg border-2 px-3 py-2 outline-none bg-transparent"
+          type="button"
+          onClick={swapSourceTarget}
+        >
+          <SwapIcon className="w-10 h-10 cursor-pointer" />
+          Swap!
+        </button>
       </div>
       <Amount
         currency={sourceCurrency}
@@ -168,7 +150,5 @@ export const ExchangePanel = () => {
         onClick={() => transfer(sourceCurrency, targetCurrency, amount)}
       />
     </Card>
-    </>
-    
   );
 };
