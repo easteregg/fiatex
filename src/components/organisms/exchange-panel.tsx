@@ -33,7 +33,7 @@ export const ExchangePanel = () => {
         setTargetCurrency(c.symbol);
       }
     }
-  }, [sourceCurrency, targetCurrency, currencies, setTargetCurrency]);
+  }, [sourceCurrency]);
 
   React.useEffect(() => {
     if (targetCurrency === sourceCurrency) {
@@ -43,7 +43,7 @@ export const ExchangePanel = () => {
         setSourceCurrency(c.symbol);
       }
     }
-  }, [targetCurrency, sourceCurrency, currencies, setSourceCurrency]);
+  }, [targetCurrency]);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === "") {

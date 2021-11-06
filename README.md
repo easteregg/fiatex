@@ -1,7 +1,7 @@
 ## Description
 This is a create-react-app frontend application that performs the following TODO. 
-[![Build and Test React Application](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml/badge.svg?event=status)](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml)
 
+[![Build and Test React Application](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml/badge.svg?branch=master)](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml)
 ## TODO
 
 The test task is to showcase Currency Exchange Functionality using CRA (Create React App). 
