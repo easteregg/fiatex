@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react'
-import App from '../App'
+import App from './App'
 
 describe('App.tsx', () => {
     it('Should render App component', async () => {
         render(<App />);
 
-        const component = screen.getByRole('app');
+        const component = screen.getByTestId('grid');
 
         expect(component).toBeInTheDocument();
     });

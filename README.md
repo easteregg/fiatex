@@ -1,5 +1,6 @@
 ## Description
 This is a create-react-app frontend application that performs the following TODO. 
+[![Build and Test React Application](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml/badge.svg?event=status)](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml)
 
 ## TODO
 
