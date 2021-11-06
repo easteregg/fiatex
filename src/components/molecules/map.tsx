@@ -1,14 +1,13 @@
 import {
   amountAtom,
-  getCurrencyFormatter,
-  getExchangeRate,
   sourceCurrencyAtom,
   targetCurrencyAtom,
 } from "@/stores/currencies";
+import { getCurrencyFormatter, getExchangeRate } from "@/stores/helpers";
 import { TCurrency } from "@/types/currency";
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { Arrow } from "./arrow";
+import { Arrow } from "../atoms/arrow";
 
 type TMapProps = {
   getCurrencyBySymbol: (c: string) => TCurrency | undefined;

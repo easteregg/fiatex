@@ -2,7 +2,9 @@ import React from "react";
 import "./App.css";
 import { RecoilRoot } from "recoil";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { Card, ExchangeRate, Grid } from "@/components/common/index";
+import { ExchangeRate, Grid } from "@/components/molecules/index";
+import { Card} from "@/components/atoms/index";
+import { Swap  } from '@/components/molecules/index';
 import { ExchangePanel } from "@/components/organisms/exchange-panel";
 
 // Setting up Query Client to provide API methods to child components
@@ -15,6 +17,7 @@ function App() {
         <Grid>
           <Card >
             <ExchangeRate />
+            <Swap />
           </Card>
           <ExchangePanel />
         </Grid>

@@ -19,9 +19,9 @@ const Amount = ({
 
   return (
     <div className="flex flex-col items-center justify-center" data-testid="amount-selector">
-      <div className="flex">
+      <div className="flex sm:flex-col">
         <input
-          className="duration-150 h-10 w-96 bg-white rounded-sm focus:shadow-lg hover:shadow-md outline-none px-4"
+          className="duration-150 h-10 md-w-full lg:w-96 bg-white rounded-sm focus:shadow-lg hover:shadow-md outline-none px-4"
           name={currency}
           value={amount}
           type="number"

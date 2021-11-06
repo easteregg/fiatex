@@ -1,13 +1,14 @@
 import React from "react";
-import { Card, Amount } from "@/components/common/index";
+import { Amount } from "@/components/molecules/index";
+import { Card } from "@/components/atoms/card";
 import {
   amountAtom,
   currenciesAtom,
-  getExchangeRate,
   sourceCurrencyAtom,
   targetCurrencyAtom,
 } from "@/stores/currencies";
-import { ReactComponent as SwapIcon } from "@/components/common/swap.svg";
+
+import { getExchangeRate } from "@/stores/helpers";
 import { CurrencySelector } from "./currency-selector";
 import { useRecoilState } from "recoil";
 import { TCurrency } from "@/types/currency";
@@ -23,12 +24,6 @@ export const ExchangePanel = () => {
   const [validationError, setValidationError] = React.useState<
     string | boolean
   >(false);
-  
-  const swapSourceTarget = () => {
-    const temp = sourceCurrency;
-    setSourceCurrency(targetCurrency);
-    setTargetCurrency(temp);
-  };
 
   React.useEffect(() => {
     if (sourceCurrency === targetCurrency) {
@@ -38,7 +33,7 @@ export const ExchangePanel = () => {
         setTargetCurrency(c.symbol);
       }
     }
-  }, [sourceCurrency]);
+  }, [sourceCurrency, targetCurrency, currencies, setTargetCurrency]);
 
   React.useEffect(() => {
     if (targetCurrency === sourceCurrency) {
@@ -48,7 +43,7 @@ export const ExchangePanel = () => {
         setSourceCurrency(c.symbol);
       }
     }
-  }, [targetCurrency]);
+  }, [targetCurrency, sourceCurrency, currencies, setSourceCurrency]);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === "") {
@@ -132,16 +127,6 @@ export const ExchangePanel = () => {
   return (
     <Card className="w-auto h-auto gap-10 ">
       <CurrencySelector getCurrencyBySymbol={getCurrencyBySymbol} />
-      <div className="flex items-center justify-center">
-        <button
-          className="rounded-lg border-2 px-3 py-2 outline-none bg-transparent"
-          type="button"
-          onClick={swapSourceTarget}
-        >
-          <SwapIcon className="w-10 h-10 cursor-pointer" />
-          Swap!
-        </button>
-      </div>
       <Amount
         currency={sourceCurrency}
         amount={amount}

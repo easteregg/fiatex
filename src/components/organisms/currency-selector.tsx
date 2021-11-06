@@ -5,9 +5,9 @@ import {
   targetCurrencyAtom,
   currenciesAtom,
 } from "@/stores/currencies";
-import { Dropdown } from "../common/index";
+import { Dropdown } from "@/components/atoms/index";
 import { TCurrency } from "@/types/currency";
-import { Map } from "@/components/common/index";
+import { Map } from "@/components/molecules/index";
 
 type TCurrencySelectorProps = {
   getCurrencyBySymbol: (currency: string) => TCurrency | undefined;
@@ -28,7 +28,6 @@ export const CurrencySelector = ({
     <div
       className="grid md:grid-flow-col sm:grid-flow-row md:grid-cols-exchange-panel content-center gap-10"
       data-testid="currency-selector"
-      role="app"
     >
       <div className="justify-self-center">
         <Dropdown
