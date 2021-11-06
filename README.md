@@ -2,6 +2,7 @@
 This is a create-react-app frontend application that performs the following TODO. 
 
 [![Build and Test React Application](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml/badge.svg?branch=master)](https://github.com/easteregg/fiatex/actions/workflows/build_test_react.yml)
+[![codecov](https://codecov.io/gh/easteregg/fiatex/branch/master/graph/badge.svg?token=BbcnbFSzlx)](https://codecov.io/gh/easteregg/fiatex)
 ## 
 Scenario - user has three wallets:
 
