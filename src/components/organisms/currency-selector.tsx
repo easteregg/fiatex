@@ -27,7 +27,8 @@ export const CurrencySelector = ({
   return (
     <div
       className="grid md:grid-flow-col sm:grid-flow-row md:grid-cols-exchange-panel content-center gap-10"
-      data-testid="app"
+      data-testid="currency-selector"
+      role="app"
     >
       <div className="justify-self-center">
         <Dropdown

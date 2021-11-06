@@ -6,7 +6,7 @@ describe('App.tsx', () => {
     it('Should render App component', async () => {
         render(<App />);
 
-        const component = screen.getByTestId('app');
+        const component = screen.getByRole('app');
 
         expect(component).toBeInTheDocument();
     });

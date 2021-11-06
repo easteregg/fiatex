@@ -25,6 +25,7 @@ const Amount = ({
           name={currency}
           value={amount}
           type="number"
+          data-testid="amount-input"
           required
           min={0}
           step={0.01}

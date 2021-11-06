@@ -18,6 +18,7 @@ export const Dropdown = ({
     <select
       className="bg-white outline-none rounded-lg p-2 text-xl duration-150  shadow-sm hover:shadow-lg cursor-pointer"
       value={selectedCurrency}
+      role="dropdown"
       onChange={(e) => onChange(e.target.value)}
     >
       {currencies.map((option) => (
