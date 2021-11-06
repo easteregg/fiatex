@@ -36,3 +36,9 @@ Also make sure to link the demo URL in the Readme.
 
 ## Demo
 This project has been deployed here: https://fiatex.vercel.app/
+
+##  A few notes: 
+
+- Styling has been done using tailwind-css. 
+- State management has been done using Recoil. 
+- Component directory structure is loosely based on ATOMIC design. 
