@@ -33,7 +33,18 @@ export const ExchangePanel = () => {
         setTargetCurrency(c.symbol);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sourceCurrency]);
+  React.useEffect(() => {
+    if (sourceCurrency === targetCurrency) {
+      const c = currencies.find((c) => c.symbol !== targetCurrency);
+
+      if (c) {
+        setTargetCurrency(c.symbol);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetCurrency]);
 
   React.useEffect(() => {
     if (targetCurrency === sourceCurrency) {
@@ -43,6 +54,7 @@ export const ExchangePanel = () => {
         setSourceCurrency(c.symbol);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetCurrency]);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
